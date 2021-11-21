@@ -14,6 +14,7 @@
     <modules>
         <module>MyPersistence</module>
         <module>JDBCTest</module>
+        <module>QuickStarter</module>
     </modules>
     <dependencies>
         <dependency>

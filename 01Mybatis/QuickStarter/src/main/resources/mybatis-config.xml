@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!-- logImpl 属性配置指定使用 LOG4J 输出日志 -->
+        <setting name="logImpl" value="LOG4J2"/>
+    </settings>
+    <typeAliases>
+        <!-- 配置了一个包的别名，如：com.bin.model.Country，在使用类时可以使用 Country 即可，或采用如下方式 -->
+         <typeAlias alias="user" type="com.bin.lg.domain.User"/>
+        <!-- <package name="com.bin.model"/>-->
+    </typeAliases>
+
+    <!-- 修改默认的处理器，如果在下方的 resultMap 指定了 typeHandler 这里可以不需要-->
+    <!--<typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="com.bin.lg.enums.CountryCode"/>
+    </typeHandlers>-->
+
+    <environments default="development">
+        <environment id="development">
+            <!-- 配置数据库连接  -->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///mybatis2?serverTimezone=Asia/Shanghai&amp;characterEncoding=utf8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+
+
+    <mappers>
+        <!-- MyBatis 的 SQL 语句和映射配置文件 -->
+        <mapper resource="com.bin.lg.mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>
